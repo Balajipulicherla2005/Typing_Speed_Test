@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 
 const sampleText =
-  "The quick brown fox jumps over the lazy dog. This sentence contains every letter of the alphabet, making it a popular choice for typing practice and font samples.";
-  
+  " This sentence contains every letter of the alphabet, making it a popular choice for typing practice and font samples.";
+
 function App() {
 
   const [text, setText] =
