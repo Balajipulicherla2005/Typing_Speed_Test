@@ -1,4 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, {
+  useState,
+  useEffect,
+  useCallback
+} from "react";
+
 import "./App.css";
 
 const sampleText =
@@ -24,16 +29,17 @@ function App() {
   const [wpm, setWpm] =
     useState(0);
 
-  const calculateWPM = () => {
+  const calculateWPM =
+    useCallback(() => {
 
-    const words =
-      text.trim() === ""
-        ? 0
-        : text.trim().split(" ").length;
+      const words =
+        text.trim() === ""
+          ? 0
+          : text.trim().split(" ").length;
 
-    setWpm(words);
+      setWpm(words);
 
-  };
+    }, [text]);
 
   useEffect(() => {
 
@@ -59,7 +65,11 @@ function App() {
 
     return () => clearInterval(timer);
 
-  }, [isRunning, timeLeft, text]);
+  }, [
+    isRunning,
+    timeLeft,
+    calculateWPM
+  ]);
 
   const handleChange = (e) => {
 
@@ -95,7 +105,9 @@ function App() {
 
     <div className="container">
 
-      <h1>Typing Speed Test</h1>
+      <h1>
+        Typing Speed Test
+      </h1>
 
       <p className="sample-text">
         {sampleText}
