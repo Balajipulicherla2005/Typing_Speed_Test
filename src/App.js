@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 
 const sampleText =
-  " This sentence contains every letter of the alphabet, making it a popular choice for typing practice and font samples.";
+  "React is a JavaScript library for building user interfaces.";
 
 function App() {
 
@@ -23,6 +23,17 @@ function App() {
 
   const [wpm, setWpm] =
     useState(0);
+
+  const calculateWPM = () => {
+
+    const words =
+      text.trim() === ""
+        ? 0
+        : text.trim().split(" ").length;
+
+    setWpm(words);
+
+  };
 
   useEffect(() => {
 
@@ -48,24 +59,13 @@ function App() {
 
     return () => clearInterval(timer);
 
-  }, [isRunning, timeLeft]);
+  }, [isRunning, timeLeft, text]);
 
   const handleChange = (e) => {
 
     if (!isStarted) return;
 
     setText(e.target.value);
-
-  };
-
-  const calculateWPM = () => {
-
-    const words =
-      text.trim() === ""
-        ? 0
-        : text.trim().split(" ").length;
-
-    setWpm(words);
 
   };
 
