@@ -6,8 +6,7 @@ import React, {
 
 import "./App.css";
 
-const sampleText =
-  "React is a JavaScript library for building user interfaces.";
+const sampleText = "Improve your typing speed and accuracy with a real-time timer-based typing test.";
 
 function App() {
 
